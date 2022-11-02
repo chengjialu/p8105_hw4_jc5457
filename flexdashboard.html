@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Flex Dsashboard</title>
+
+<script src="site_libs/header-attrs-2.16/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="site_libs/plotly-binding-4.10.0/plotly.js"></script>
+<script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="site_libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="site_libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="site_libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="site_libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Home</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="about-me.html">About Me</a>
+</li>
+<li>
+  <a href="flexboard.html">Dashboard</a>
+</li>
+<li>
+  <a href="mailto:&lt;chengjialu1998@126.com&gt;">
+    <span class="fa fa-envelope fa-lug"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="http://github.com/chengjialu/">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Flex Dsashboard</h1>
+
+</div>
+
+
+<p>Here I use the <code>Instacart</code> dataset, and load it from the
+p8105.datasets package. The <code>instacart</code> dataset is large,
+thus here I only used the <code>product_name == "Spring Water"</code>
+and <code>add_to_cart_order &gt;= 15</code> data (127 obs) to ensure a
+reasonable product. Using the filtered <code>Instacart</code> dataset,
+we can check the big customers’ (purchase &gt;= 15 in an order) behavior
+in purchasing Spring Water. 3 plots provided.</p>
+<hr />
+<div id="chart-a-figure-out-those-big-customers-for-spring-water"
+class="section level3">
+<h3>Chart A: Figure out those “Big customers” for Spring Water</h3>
+<p>Let’s figure out those users who would like to buy a lot of Spring
+Waters (&gt;= 15 in an order), and see who would love to reorder among
+these “big customers”!</p>
+<pre class="r"><code>instacart %&gt;%
+  mutate(user_id = fct_reorder(user_id, add_to_cart_order)) %&gt;% 
+  plot_ly(
+  x = ~user_id, y = ~add_to_cart_order, color = ~reordered2, 
+  type = &quot;bar&quot;, colors = &quot;viridis&quot;, width = 900
+  )</code></pre>
+<div id="htmlwidget-893eab31296e274454da" style="width:900px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-893eab31296e274454da">{"x":{"visdat":{"13c49706a76db":["function () ","plotlyVisDat"]},"cur_data":"13c49706a76db","attrs":{"13c49706a76db":{"x":{},"y":{},"color":{},"colors":"viridis","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"}},"layout":{"width":900,"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"user_id","type":"category","categoryorder":"array","categoryarray":["10842","114077","118083","120933","18745","189414","27282","33398","48916","58275","73388","74899","85173","86015","110682","12555","130230","190694","5220","53653","5506","5768","5820","6240","66813","79725","80221","81107","89128","104724","132034","135207","169121","187418","190022","27532","49999","66192","66807","71061","78485","80610","8463","123964","126880","155023","157637","165982","178553","21538","37993","38742","43036","62454","80056","85122","86380","102690","103067","104224","115977","133590","142441","164835","179223","181733","18583","34218","47840","151982","16070","16999","17749","179996","201069","58481","62120","8039","97423","137675","168631","22146","31572","35056","10654","204308","22277","23156","25070","61712","105362","170059","198379","155987","172193","193092","71449","129730","46914","73519","93684","95936","97083","109757","173502","75552","109594","100824","139588","182102","26066","37268","81658","84876","161828","390","85798","145526","147572","110742","87006","126840","109740","200737","74463","123900","46179"]},"yaxis":{"domain":[0,1],"automargin":true,"title":"add_to_cart_order"},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":["79725","169121","5506","43036","179223","71449","22146","34218","204308","5768","18583","23156","53653","33398","181733","85122","126840","16070","10654","71061","89128","8463","66192","190694","58481","17749","97423","155023","161828","151982","26066","37993","133590","27532","139588","130230","142441","198379","201069","164835","123964","173502","80056","86380","48916","147572","75552","74463","189414","105362","46914","80610","46179","81107","120933","25070","104724","123900","49999","73388","86015","93684","114077","103067","38742"],"y":[16,17,16,18,19,24,21,19,22,16,19,22,16,15,19,18,34,20,22,17,16,17,17,16,20,20,20,18,30,20,28,18,19,17,28,16,19,23,20,19,18,26,18,18,15,31,26,37,15,23,25,17,53,16,15,22,17,44,17,15,15,25,15,19,18],"type":"bar","name":"new customer","marker":{"color":"rgba(68,1,84,1)","line":{"color":"rgba(68,1,84,1)"}},"textfont":{"color":"rgba(68,1,84,1)"},"error_y":{"color":"rgba(68,1,84,1)"},"error_x":{"color":"rgba(68,1,84,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["95936","126880","137675","170059","58275","5820","155987","129730","8039","157637","6240","97083","22277","81658","27282","47840","66807","182102","35056","61712","31572","18745","200737","118083","109594","110742","110682","10842","115977","179996","85798","102690","168631","187418","74899","109740","190022","165982","73519","135207","85173","172193","100824","145526","84876","62454","21538","390","178553","109757","104224","66813","132034","87006","78485","12555","62120","193092","5220","37268","16999","80221"],"y":[25,18,21,23,15,16,24,25,20,18,16,25,22,29,15,19,17,28,21,22,21,15,35,15,27,32,16,15,19,20,30,19,21,17,15,35,17,18,25,17,15,24,28,31,29,18,18,30,18,26,19,16,17,33,17,16,20,24,16,28,20,16],"type":"bar","name":"reordered customer","marker":{"color":"rgba(253,231,37,1)","line":{"color":"rgba(253,231,37,1)"}},"textfont":{"color":"rgba(253,231,37,1)"},"error_y":{"color":"rgba(253,231,37,1)"},"error_x":{"color":"rgba(253,231,37,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<p>Here we can see the User ID of those purchase &gt;= 15 Spring Water
+in an order. About half of them are reordered costumers - the Spring
+Water vendor should pay closer attention to those reordered big
+customers.</p>
+<hr />
+</div>
+<div id="chart-b-the-time-of-purchasing-spring-water"
+class="section level3">
+<h3>Chart B: The time of purchasing Spring Water</h3>
+<p>Let’s figure out the time trend in a day when the “big customers”
+like to buy Spring Waters, and see if there’s difference in the time
+pattern between those reordered &amp; new customers!</p>
+<pre class="r"><code>instacart %&gt;% 
+  mutate(order_hour_of_day = sort(order_hour_of_day)
+         ) %&gt;% 
+  plot_ly(x = ~order_hour_of_day, y = ~add_to_cart_order, color = ~reordered2, 
+          type = &quot;box&quot;, colors = &quot;viridis&quot;, width = 900)</code></pre>
+<div id="htmlwidget-71594b5c16aea0b898c7" style="width:900px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-71594b5c16aea0b898c7">{"x":{"visdat":{"13c49d02f6c9":["function () ","plotlyVisDat"]},"cur_data":"13c49d02f6c9","attrs":{"13c49d02f6c9":{"x":{},"y":{},"color":{},"colors":"viridis","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"box"}},"layout":{"width":900,"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"order_hour_of_day"},"yaxis":{"domain":[0,1],"automargin":true,"title":"add_to_cart_order"},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"fillcolor":"rgba(68,1,84,0.5)","x":[1,5,8,9,9,9,9,9,9,9,10,10,10,10,10,10,11,11,11,11,11,12,12,12,12,12,13,13,13,13,13,14,14,14,14,14,15,15,15,16,16,16,17,17,17,17,17,17,17,17,17,17,18,18,18,18,18,19,19,19,21,21,21,22,23],"y":[16,17,16,18,19,24,21,19,22,16,19,22,16,15,19,18,34,20,22,17,16,17,17,16,20,20,20,18,30,20,28,18,19,17,28,16,19,23,20,19,18,26,18,18,15,31,26,37,15,23,25,17,53,16,15,22,17,44,17,15,15,25,15,19,18],"type":"box","name":"new customer","marker":{"color":"rgba(68,1,84,1)","line":{"color":"rgba(68,1,84,1)"}},"line":{"color":"rgba(68,1,84,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(253,231,37,0.5)","x":[3,7,7,7,7,8,8,9,9,9,10,10,10,10,10,11,11,11,11,11,11,12,12,12,12,12,12,12,13,13,13,13,13,13,14,14,14,14,15,15,15,15,15,15,16,16,16,16,17,17,18,18,18,18,18,18,21,21,21,22,22,22],"y":[25,18,21,23,15,16,24,25,20,18,16,25,22,29,15,19,17,28,21,22,21,15,35,15,27,32,16,15,19,20,30,19,21,17,15,35,17,18,25,17,15,24,28,31,29,18,18,30,18,26,19,16,17,33,17,16,20,24,16,28,20,16],"type":"box","name":"reordered customer","marker":{"color":"rgba(253,231,37,1)","line":{"color":"rgba(253,231,37,1)"}},"line":{"color":"rgba(253,231,37,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<p>Here we can see that most big customers purchase Spring Water between
+7am and 22pm.</p>
+<p>More reordered big customers tend to purchase in the morning, while
+more new big customers tend to purchase in the afternoon. This could
+provide some insights for the supermarket supply chain to pick a time of
+importing Spring Water.</p>
+<hr />
+</div>
+<div
+id="chart-c-figure-out-the-pattern-between-frequency-of-purchase-and-number-of-purchase"
+class="section level3">
+<h3>Chart C: Figure out the pattern between frequency of purchase and
+number of purchase</h3>
+<p>Let’s figure out the pattern between frequency of purchase and number
+of purchase, among the big customers of Spring Water.</p>
+<pre class="r"><code>instacart %&gt;% 
+  plot_ly(
+      x = ~days_since_prior_order, y = ~add_to_cart_order, color = ~reordered2,
+      type = &quot;scatter&quot;, mode = &quot;markers&quot; , width = 900)</code></pre>
+<pre><code>## Warning in RColorBrewer::brewer.pal(N, &quot;Set2&quot;): minimal value for n is 3, returning requested palette with 3 different levels
+
+## Warning in RColorBrewer::brewer.pal(N, &quot;Set2&quot;): minimal value for n is 3, returning requested palette with 3 different levels</code></pre>
+<div id="htmlwidget-be167d9fe6399a30f37b" style="width:900px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-be167d9fe6399a30f37b">{"x":{"visdat":{"13c4949700304":["function () ","plotlyVisDat"]},"cur_data":"13c4949700304","attrs":{"13c4949700304":{"x":{},"y":{},"mode":"markers","color":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"width":900,"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"days_since_prior_order"},"yaxis":{"domain":[0,1],"automargin":true,"title":"add_to_cart_order"},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[30,16,8,9,22,30,13,30,30,8,30,30,6,30,30,30,14,7,30,8,18,14,21,30,20,30,30,8,11,30,30,13,7,23,9,30,30,30,30,4,30,8,10,30,16,30,14,30,29,18,30,30,29,30,15,9,14,30,14,12,16,30,30,30,6],"y":[16,17,16,18,19,24,21,19,22,16,19,22,16,15,19,18,34,20,22,17,16,17,17,16,20,20,20,18,30,20,28,18,19,17,28,16,19,23,20,19,18,26,18,18,15,31,26,37,15,23,25,17,53,16,15,22,17,44,17,15,15,25,15,19,18],"mode":"markers","type":"scatter","name":"new customer","marker":{"color":"rgba(102,194,165,1)","line":{"color":"rgba(102,194,165,1)"}},"textfont":{"color":"rgba(102,194,165,1)"},"error_y":{"color":"rgba(102,194,165,1)"},"error_x":{"color":"rgba(102,194,165,1)"},"line":{"color":"rgba(102,194,165,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[14,30,30,13,8,13,30,7,0,5,21,28,7,30,30,6,14,14,8,30,30,30,20,10,5,16,30,27,30,21,4,6,7,30,30,5,14,26,10,6,30,30,7,0,19,26,30,20,3,4,30,28,0,30,30,30,30,29,16,4,21,6],"y":[25,18,21,23,15,16,24,25,20,18,16,25,22,29,15,19,17,28,21,22,21,15,35,15,27,32,16,15,19,20,30,19,21,17,15,35,17,18,25,17,15,24,28,31,29,18,18,30,18,26,19,16,17,33,17,16,20,24,16,28,20,16],"mode":"markers","type":"scatter","name":"reordered customer","marker":{"color":"rgba(141,160,203,1)","line":{"color":"rgba(141,160,203,1)"}},"textfont":{"color":"rgba(141,160,203,1)"},"error_y":{"color":"rgba(141,160,203,1)"},"error_x":{"color":"rgba(141,160,203,1)"},"line":{"color":"rgba(141,160,203,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<p>Here we can see that among the big customers of Spring Water, 4-10
+days or 30 days since prior order would be a most frequent time period
+for reorder. The new customers’ days since prior order spread evenly
+from 5-30 days.</p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

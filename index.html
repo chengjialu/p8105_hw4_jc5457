@@ -402,15 +402,16 @@ href="about-me.html">About Me</a></li>
 <p>Create a flexdashboard using <code>plotly</code> for that includes at
 least three distinct plot types (e.g. scatterplots, line plots, bar
 plots, box plots, etc.).</p>
-<p>Use one of the following datasets, and load from the p8105.datasets
-package:</p>
-<ul>
-<li>Instacart</li>
-<li>NY NOAA</li>
-<li>NYC Restaurant Inspections</li>
-</ul>
-<p>These datasets are large; you may want / need to filter or randomly
-sample from the complete dataset to ensure a reasonable product.</p>
+<p>Here I use the <code>Instacart</code> dataset, and load it from the
+p8105.datasets package. The <code>instacart</code> dataset is large,
+thus here I only used the <code>product_name == "Spring Water"</code>
+and <code>add_to_cart_order &gt;= 15</code> data (127 obs) to ensure a
+reasonable product. Using the filtered <code>Instacart</code> dataset,
+we can check the big customers’ (purchase &gt;= 15 in an order) behavior
+in purchasing Spring Water. 3 plots provided.</p>
+<p>Format references from: <a
+href="https://pkgs.rstudio.com/flexdashboard/"
+class="uri">https://pkgs.rstudio.com/flexdashboard/</a></p>
 </div>
 
 
