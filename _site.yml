@@ -1,0 +1,16 @@
+name: "p8105_hw4"
+output_dir: "."
+navbar:
+  title: "Home"
+  right:
+    - text: "About Me"
+      href: about-me.html
+    - text: "Dashboard"
+      href: flexboard.html
+    - icon: fa-envelope fa-lug
+      href: mailto:<chengjialu1998@126.com>
+    - icon: fa-github fa-lg
+      href: http://github.com/chengjialu/
+output:
+  html_document:
+    theme: flatly

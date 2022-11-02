@@ -10,10 +10,28 @@ output:
 
 ## Brief overview
 
-Experienced researcher with a demonstrated history of working in the consulting, venture capital, and academia. Skilled in data analysis, public speaking, and content operations. Strong business development professional, with a MPH focused in Epidemiology with a certificate in Applied Biostatistics and Health Data Science from Columbia University. Also a fashion photographer, documentary filmmaker, and NFT creator in spare time.
+  Experienced researcher with a demonstrated history of working in the consulting, venture capital, and academia. Skilled in data analysis, public speaking, and content operations. 
+  
+  Strong business development professional, with a MPH focused in Epidemiology with a certificate in Applied Biostatistics and Health Data Science from Columbia University. 
+  
+  Also a fashion photographer, documentary filmmaker, and NFT creator in spare time.
+  
+  There's one principle underlies these seemingly fragmented experiences
+  -- “Create through science/business/art, to surpass the limitation of individual's life.”
 
-There's one principle underlies these seemingly fragmented experiences
--- “Create through science/business/art, to surpass the limitation of individual's life.”
+
+  <img src="files/jialu.jpg" style="width:100%">
 
 ## My resume
-xx
+<body>
+    <iframe src="files/CV-Jialu Cheng- Oct 26th.pdf" width="100%" height="500px">
+    </iframe>
+</body>
+
+## Contact
+  
+  * [LinkedIn](https://www.linkedin.com/in/jialu-cheng-b775b61a4)
+  
+  * [Instagram](https://www.instagram.com/c.jl.c.jl.c.jl/)
+  
+  * [OpenSea](https://opensea.io/jialu_cheng)

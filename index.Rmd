@@ -1,5 +1,5 @@
 ---
-title: "p8105_hw4_jc5457"
+title: "Landing page"
 output: 
   html_document:
     code_folding: hide
@@ -7,20 +7,27 @@ output:
     toc_float: true
 ---
 
+This landing page is created for p8105_hw4 by jc5457.
+
 ## Problem 1
 
 Create a personal website at chengjialu.github.io, include:
 
-1. A brief introductory landing page
+1. A brief introductory landing page (this page)
 
-2. A page giving my academic and professional experience (i.e. a resume)
+2. A page giving my academic and professional experience:
 
-[About Me](about me.html)
+    [About Me](about-me.html) includes 
+    * the brief overview about me
+    * my embeded resume
+    * my contact
+
 
 3. Links in the site navigation for my GitHub account, my email, and other professional networks.
+    
+    * Github and email icon can be found on the top right corner of the website.
+    * Other contact information: See "contact" tab in  [About Me](about-me.html)
 
-
-<img src="image/medusa.jpg" style="width:100%">
 
 ## Problem 2
 
