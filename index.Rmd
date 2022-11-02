@@ -31,7 +31,7 @@ Create a personal website at chengjialu.github.io, include:
 
 ## Problem 2
 
-Create a flexdashboard using `plotly` for that includes at least three distinct plot types (e.g. scatterplots, line plots, bar plots, box plots, etc.). 
+Create a [flexdashboard](flexdashboard.html) using `plotly` for that includes at least three distinct plot types (e.g. scatterplots, line plots, bar plots, box plots, etc.). 
 
 Here I use the `Instacart` dataset, and load it from the p8105.datasets package. The `instacart` dataset is large, thus here I only used the `product_name == "Spring Water"` and `add_to_cart_order >= 15` data (127 obs) to ensure a reasonable product. Using the filtered `Instacart` dataset, we can check the big customers' (purchase >= 15 in an order) behavior in purchasing Spring Water. 3 plots provided.
 
