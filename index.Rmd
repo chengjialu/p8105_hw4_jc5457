@@ -1,0 +1,36 @@
+---
+title: "p8105_hw4_jc5457"
+output: 
+  html_document:
+    code_folding: hide
+    toc: true
+    toc_float: true
+---
+
+## Problem 1
+
+Create a personal website at chengjialu.github.io, include:
+
+1. A brief introductory landing page
+
+2. A page giving my academic and professional experience (i.e. a resume)
+
+[About Me](about me.html)
+
+3. Links in the site navigation for my GitHub account, my email, and other professional networks.
+
+
+<img src="image/medusa.jpg" style="width:100%">
+
+## Problem 2
+
+Create a flexdashboard using `plotly` for that includes at least three distinct plot types (e.g. scatterplots, line plots, bar plots, box plots, etc.). 
+
+Use one of the following datasets, and load from the p8105.datasets package:
+
+* Instacart
+* NY NOAA
+* NYC Restaurant Inspections
+
+These datasets are large; you may want / need to filter or randomly sample from the complete dataset to ensure a reasonable product.
+

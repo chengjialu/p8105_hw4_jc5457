@@ -1,0 +1,19 @@
+---
+title: "About me"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+# {.tabset}
+
+## Brief overview
+
+Experienced researcher with a demonstrated history of working in the consulting, venture capital, and academia. Skilled in data analysis, public speaking, and content operations. Strong business development professional, with a MPH focused in Epidemiology with a certificate in Applied Biostatistics and Health Data Science from Columbia University. Also a fashion photographer, documentary filmmaker, and NFT creator in spare time.
+
+There's one principle underlies these seemingly fragmented experiences
+-- “Create through science/business/art, to surpass the limitation of individual's life.”
+
+## My resume
+xx
